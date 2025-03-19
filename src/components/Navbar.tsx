@@ -1,25 +1,33 @@
 import { IoCartOutline } from "react-icons/io5";
-import { Link } from 'react-router'
+import { Link } from "react-router";
+import useStore from "./store/useStore";
 
 const Navbar = () => {
+  const { cartItems } = useStore();
+
   return (
     <>
-      <nav className="hidden md:flex">
-        <div className="container mx-auto max-w-[1320px] md:px-10 md:h-[50px] flex flex-col md:flex-row md:justify-between md:items-center border-b-1 border-[#846046]">
+      <nav className="fixed bottom-0 w-full bg-white md:relative md:bottom-auto md:w-auto">
+        <div className="container mx-auto max-w-[400px] md:max-w-[1320px] md:px-10 h-[45px] md:h-[50px] flex justify-between items-center border-t-1 md:border-t-0 md:border-b-1 border-[#846046]">
           <div>
-            <Link to='/'>
-              <h2 className="font-bold text-[27px]">Café Bliss</h2>
+            <Link to="/">
+              <h2 className="font-bold text-[17px] md:text-[27px]">Café Bliss</h2>
             </Link>
           </div>
-          <form>
-            <Link to='/cart'>
+          <form className="relative">
+            <Link to="/cart">
               <IoCartOutline size={25} />
             </Link>
+            {cartItems.length > 0 && (
+              <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                {cartItems.length}
+              </div>
+            )}
           </form>
         </div>
       </nav>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

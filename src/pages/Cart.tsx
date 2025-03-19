@@ -1,4 +1,4 @@
-import Order from "../components/cart/order"
+import Order from "../components/cart/Order"
 
 const Cart = () => {
   return (
