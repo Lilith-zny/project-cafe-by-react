@@ -77,7 +77,7 @@ const Category: React.FC = () => {
 
   return (
     <>
-      <div className="container mx-auto max-w-[400px] md:max-w-[900px] flex flex-col items-start justify-center">
+      <div className="container mx-auto max-w-[320px] md:max-w-[900px] flex flex-col items-start justify-center">
         <h1 className="text-black text-[25px] font-bold mb-5">Category</h1>
         <ul className="flex gap-5">
           <li className={`cursor-pointer rounded-3xl w-[120px] h-[40px] flex justify-center items-center ${isCoffee ? 'bg-gradient-to-r from-[#CB8A58] to-[#562B1A] text-white' : 'bg-white border border-[#846046] text-[#562B1A]'}`} onClick={() => setIsCoffee(true)}>
@@ -88,7 +88,7 @@ const Category: React.FC = () => {
           </li>
         </ul>
       </div>
-      <div className="container mt-5 mx-auto max-w-[400px] md:max-w-[900px] grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="container mt-5 mx-auto max-w-[320px] md:max-w-[900px] grid grid-cols-1 md:grid-cols-3 gap-5">
         {(isCoffee ? coffeeList : dessertList).map((item) => (
           <div key={item.id} className="border-[#CB8A58] border-2 rounded-[25px] p-5 flex flex-col items-center">
             <div className="h-[200px] rounded-[25px] bg-cover bg-center w-full" style={{ backgroundImage: `url(${item.image})` }}></div>

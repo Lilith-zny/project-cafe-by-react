@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="fixed bottom-0 w-full bg-white md:relative md:bottom-auto md:w-auto">
-        <div className="container mx-auto max-w-[400px] md:max-w-[1320px] md:px-10 h-[45px] md:h-[50px] flex justify-between items-center border-t-1 md:border-t-0 md:border-b-1 border-[#846046]">
+        <div className="container mx-auto max-w-[320px] md:max-w-[1320px] md:px-10 h-[45px] md:h-[50px] flex justify-between items-center border-t-1 md:border-t-0 md:border-b-1 border-[#846046]">
           <div>
             <Link to="/">
               <h2 className="font-bold text-[17px] md:text-[27px]">Café Bliss</h2>

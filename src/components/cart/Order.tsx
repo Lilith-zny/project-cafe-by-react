@@ -8,9 +8,13 @@ const Order = () => {
   const total = subtotal + vat; // รวม VAT เข้ากับ subtotal
 
   return (
-    <div className="container mx-auto max-w-[400px] md:max-w-[1320px] p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="container mx-auto max-w-[350px] md:max-w-[1320px] grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Shopping Cart Section */}
       <div className="md:col-span-2">
+        <div className="flex justify-between items-center">
+          <h2 className="text-2xl font-semibold mb-4">Shopping Cart</h2>
+          <h2 className="text-2xl font-semibold mb-4">{cartItems.length} Items</h2>
+        </div>
         <div className="bg-white shadow-md rounded-lg p-6">
           {cartItems.length === 0 ? (
             <p>Your cart is empty.</p>
@@ -21,7 +25,7 @@ const Order = () => {
                   <th className="text-left p-2"></th>
                   <th className="p-2">Price</th>
                   <th className="p-2">Quantity</th>
-                  <th className="p-2">Subtotal</th>
+                  <th className="p-2">total</th>
                   <th className="p-2"></th>
                 </tr>
               </thead>
