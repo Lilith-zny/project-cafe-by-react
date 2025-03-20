@@ -18,6 +18,7 @@ import brownie from "../../assets/images/brownie.jpg";
 import croissant from "../../assets/images/croissant.jpg";
 
 import useStore from "../store/useStore";
+import Popup from "../common/Popup";
 
 interface Item {
   id: number;
@@ -46,18 +47,19 @@ const dessertList: Item[] = [
   { id: 205, name: "Croissant", price: 85, image: croissant },
 ];
 
-
-
 const Category: React.FC = () => {
   const [isCoffee, setIsCoffee] = useState(true);
   const [selectedSize, setSelectedSize] = useState<{ [key: number]: "S" | "M" | "L" }>({});
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
 
   const { addToCart } = useStore()
 
   const handleAddToCart = (item: Item) => {
     // ตรวจสอบว่ารายการนี้เป็น coffee และต้องเลือก size
     if (isCoffee && typeof item.price === "object" && !selectedSize[item.id]) {
-      alert("Please select a size before adding to cart.");
+      setPopupMessage("กรุณาเลือกขนาดก่อนเพิ่มสินค้าลงตะกร้า");
+      setShowPopup(true);
       return;
     }
   
@@ -65,9 +67,9 @@ const Category: React.FC = () => {
       id: item.id,
       name: item.name,
       price: typeof item.price === "object" 
-        ? item.price[selectedSize[item.id] || "M"] // ใช้ size เฉพาะ coffee
-        : item.price, // ใช้ราคาโดยตรงสำหรับ dessert
-      size: isCoffee ? selectedSize[item.id] || "M" : undefined, // เพิ่ม size เฉพาะ coffee
+        ? item.price[selectedSize[item.id] || "M"]
+        : item.price,
+      size: isCoffee ? selectedSize[item.id] || "M" : undefined,
       image: item.image,
     };
   
@@ -119,6 +121,13 @@ const Category: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {showPopup && (
+        <Popup 
+          message={popupMessage}
+          onClose={() => setShowPopup(false)}
+        />
+      )}
     </>
   );
 };
