@@ -104,7 +104,7 @@ const Order = () => {
               onClick={handleCheckout}
               className="w-full bg-gradient-to-r from-[#CB8A58] to-[#562B1A] text-white cursor-pointer py-3 mt-4 rounded-md"
             >
-              Proceed to Checkout
+              Checkout
             </button>
           </div>
         </div>
